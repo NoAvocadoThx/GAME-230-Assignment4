@@ -32,7 +32,7 @@ void ParticleEffect::CreateParticleArray(Vector2f MousePosition)
 		Vector2f Velocity( ((float)(std::rand() % 1500 - 500)), ((float)(std::rand() % 1500 - 500)));
 		Velocity = Normalize(Velocity);
 		Vector3f RGB((float)(std::rand() % 225), (float)(std::rand() % 225), (float)(std::rand() % 225));
-		Color Color(RGB.x, RGB.y, RGB.z);
+		Color Color((Uint8)RGB.x, (Uint8)RGB.y, (Uint8)RGB.z);
 		SingleParticle->Setup(MousePosition, Velocity, (float)(40 + (rand() % 60)), Color, (float)(std::rand() % 4));
 		ParticleArray[i] = SingleParticle;
 	}
