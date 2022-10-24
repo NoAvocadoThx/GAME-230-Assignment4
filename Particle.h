@@ -1,3 +1,4 @@
+#pragma once
 //*****************************************************************
 // GAME 230 assignment 4
 // Particle.h
@@ -16,26 +17,39 @@ using namespace sf;
 class Particle
 {
 private:
-
-	CircleShape Circle;
 	Vector2f	Position;
 	Vector2f	Velocity;
 	Color		ParticleColor;
 	float		Duration = 0;
+	float		Timer = 0;
 	float		ParticleSpeed;
-	//float		Size;
-
-	const float PARTICLE_SIZE = 3.0f;
-	//const float PARTICLE_DURATION = 2.0f;
-	float PARTICLE_DURATION;
-	const float PARTICLE_SPEED = 105.0f;
+	bool        IsAlive;
 
 public:
 	Particle();
+	Particle(Vector2f MousePostition, Vector2f ParticleVelocity, float Speed, Color Color, float Duration);
 	~Particle();
 
-	void Setup(Vector2f MousePostition, Vector2f ParticleVelocity, float Speed, Color Color, float Duration);
-	void Update(float DeltaTime);
-	void Draw(RenderWindow& Window);
-	float GetDuration();
+	virtual Vector2f GetPosition();
+	virtual void SetPosition(Vector2f Position);
+
+	virtual Vector2f GetVelocity();
+	virtual void SetVelocity(Vector2f Velocity);
+
+	virtual float GetLifeSpan();
+	virtual void SetLifeSpan(float LifeSpan);
+
+	virtual float GetLifeSpanRemaining();
+	virtual void SetLifeSpanRemaining(float RemainDuration);
+
+	virtual bool GetIsAlive();
+	virtual void SetIsAlive(bool IsAlive);
+
+	
+
+protected:
+	virtual void Update(float DeltaTime);
+	virtual void Draw(RenderWindow& Window) = 0;
+
+	
 };

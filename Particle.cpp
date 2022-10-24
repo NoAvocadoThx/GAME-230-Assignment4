@@ -11,48 +11,98 @@
 //*****************************************************************
 Particle::Particle()
 {
-	Duration = PARTICLE_DURATION;
-	ParticleSpeed = PARTICLE_SPEED;
+	Duration = 1;
+	Timer = Duration;
+	ParticleSpeed = 0;
+	IsAlive = false;
+}
+
+//*****************************************************************
+Particle::Particle(Vector2f MousePosition, Vector2f ParticleVelocity, float Speed, Color Color, float Duration)
+{
+	Position = MousePosition;
+	Velocity = ParticleVelocity;
+	ParticleColor = Color;
+	this->Duration = Duration;
+	ParticleSpeed = Speed; 
+	IsAlive = true;
+	Timer = Duration;
 }
 
 //*****************************************************************
 Particle::~Particle()
 {
 
+	
 }
 
-//*****************************************************************
-void Particle::Setup(Vector2f MousePosition, Vector2f ParticleVelocity, float Speed, Color Color, float Duration)
-{
-	Circle.setRadius((float)(2+ (rand() % 7)));
-	Position = MousePosition;
-	Velocity = ParticleVelocity;
-	ParticleColor = Color;
-	//Duration = PARTICLE_DURATION;
-	this->Duration = Duration;
-	ParticleSpeed = Speed;
-
-}
 
 //*****************************************************************
 void Particle::Update(float DeltaTime)
 {
-	Position.x = ParticleSpeed * Velocity.x * DeltaTime + Position.x;
-	Position.y = ParticleSpeed * Velocity.y * DeltaTime + Position.y;
-	Circle.setPosition(Position);
-	Circle.setFillColor(ParticleColor);
 
-	Duration -= DeltaTime;
+	Timer -= DeltaTime;
+	if (Timer <= 0)
+	{
+		IsAlive = false;
+		if (this != nullptr)
+		{
+			delete this;
+			
+		}
+	}
+}
 
+
+//*****************************************************************
+Vector2f Particle::GetPosition()
+{
+	return Position;
+}
+//*****************************************************************
+void Particle::SetPosition(Vector2f _Position)
+{
+	Position = _Position;
+}
+//*****************************************************************
+Vector2f  Particle::GetVelocity()
+{
+	return Velocity;
+}
+//*****************************************************************
+void  Particle::SetVelocity(Vector2f _Velocity)
+{
+	Velocity = _Velocity;
+}
+//*****************************************************************
+float Particle::GetLifeSpan()
+{
+	return Duration;
+}
+//*****************************************************************
+void Particle::SetLifeSpan(float LifeSpan)
+{
+	Duration = LifeSpan;
 }
 
 //*****************************************************************
-void Particle::Draw(RenderWindow& Window)
+float Particle::GetLifeSpanRemaining()
 {
-	Window.draw(Circle);
+	return Timer;
+}
+//*****************************************************************
+void Particle::SetLifeSpanRemaining(float RemainDuration)
+{
+	Timer = RemainDuration;
 }
 
-float Particle::GetDuration()
+//*****************************************************************
+bool Particle::GetIsAlive()
 {
-	return Duration;
+	return IsAlive;
+}
+//*****************************************************************
+void Particle::SetIsAlive(bool _IsAlive)
+{
+	IsAlive = _IsAlive;
 }

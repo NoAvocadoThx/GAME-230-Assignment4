@@ -1,5 +1,13 @@
 // Our include guards
 // These are critical for preventing collision related errors from a file accidentally getting fully included multiple times
+//*****************************************************************
+// GAME 230 assignment 4
+// Game.h
+// Zhihao Wang
+// Dennis Zabluda
+// UCSC GPM FALL 2022
+//*****************************************************************
+
 #ifndef GAME_H
 #define GAME_H
 
@@ -13,6 +21,7 @@
 #include <SFML/OpenGL.hpp>
 #include <SFML/Main.hpp>
 
+#include "ExplosionParticleEffect.h"
 #include "ParticleEffect.h"
 
  // Place our classes, functions, variables, and so forth in their own namespace to avoid naming collisions
@@ -21,7 +30,7 @@ namespace gm {
 	 * Implements the Game Loop Programming Pattern */
 	class Game {
 	private:
-		ParticleEffect* Effect = nullptr;
+		ExplosionParticleEffect* Effect = nullptr;
 	public:
 		/* Protoypes */
 		// Constructor

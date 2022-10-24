@@ -1,4 +1,11 @@
 // We need to include our header file to implement the function prototypes of our Game class
+//*****************************************************************
+// GAME 230 assignment 4
+// Game.cpp
+// Zhihao Wang
+// Dennis Zabluda
+// UCSC GPM FALL 2022
+//*****************************************************************
 #include "Game.h"
 
 
@@ -32,7 +39,7 @@ void Game::handleInput(sf::RenderWindow& window) {
 					delete Effect;
 					Effect = nullptr;
 				}
-				Effect = new ParticleEffect();
+				Effect = new ExplosionParticleEffect();
 				Vector2f MousePosition((float)Mouse::getPosition(window).x, (float)Mouse::getPosition(window).y);
 				Effect->CreateParticleArray(MousePosition);
 

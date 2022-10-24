@@ -9,22 +9,32 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
+#include "ShapeParticle.h"
 
-class Particle;
 using namespace sf;
 
 class ParticleEffect
 {
 private:
 
-	static const int PARTICLE_ARRAY_SIZE = 90;
-	Particle* ParticleArray[PARTICLE_ARRAY_SIZE] = { nullptr };
+	
+	ShapeParticle** ParticleArray;
 
 	float Duration;
+
+protected:
+	int Size;
 public:
-	ParticleEffect();
+	ParticleEffect() 
+	{ 
+		Size = 30; 
+		Duration = 10;
+		ParticleArray = nullptr;
+	};
+	ParticleEffect(int Size);
 	~ParticleEffect();
 	void CreateParticleArray(Vector2f MousePosition);
+	virtual ShapeParticle* CreateParticle(Vector2f MousePosition) = 0;
 	void Update(float DeltaTime);
 	void Draw(RenderWindow& Window);
 	void Destroy();
