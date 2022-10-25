@@ -22,6 +22,7 @@
 #include <SFML/Main.hpp>
 
 #include "ExplosionParticleEffect.h"
+#include "SnowParticleEffect.h"
 #include "ParticleEffect.h"
 
  // Place our classes, functions, variables, and so forth in their own namespace to avoid naming collisions
@@ -30,7 +31,9 @@ namespace gm {
 	 * Implements the Game Loop Programming Pattern */
 	class Game {
 	private:
-		ExplosionParticleEffect* Effect = nullptr;
+		ExplosionParticleEffect* ExplosionEffect = nullptr;
+		SnowParticleEffect* SnowEffect = nullptr;
+		int EffectIndex = 0;
 	public:
 		/* Protoypes */
 		// Constructor

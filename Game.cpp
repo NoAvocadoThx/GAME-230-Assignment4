@@ -34,27 +34,64 @@ void Game::handleInput(sf::RenderWindow& window) {
 		{
 			if (event.mouseButton.button == Mouse::Left)
 			{
-				if (Effect != nullptr)
-				{
-					delete Effect;
-					Effect = nullptr;
-				}
-				Effect = new ExplosionParticleEffect();
 				Vector2f MousePosition((float)Mouse::getPosition(window).x, (float)Mouse::getPosition(window).y);
-				Effect->CreateParticleArray(MousePosition);
 
+				if (ExplosionEffect != nullptr)
+				{
+					delete ExplosionEffect;
+					ExplosionEffect = nullptr;
+				}
+				if (SnowEffect != nullptr)
+				{
+					delete SnowEffect;
+					SnowEffect = nullptr;
+				}
+				
 
+				switch (EffectIndex)
+				{
+
+				case 0:
+					ExplosionEffect = new ExplosionParticleEffect();
+					ExplosionEffect->CreateParticleArray(MousePosition);
+					break;
+				case 1:
+					SnowEffect = new SnowParticleEffect();
+					SnowEffect->CreateParticleArray(MousePosition);
+					break;
+				default:
+					break;
+				}			
 			}
+		}
 
+		if (event.type == Event::KeyReleased) 
+		{
+			switch (event.key.code)
+			{
+			case Keyboard::Num1:
+				EffectIndex = 0;
+				break;
+			case Keyboard::Num2:
+				EffectIndex = 1;
+				break;
+			default:
+				EffectIndex = 0;
+				break;
+			}
 		}
 	}
 }
 
 // Implements the update portion of our Game Loop Programming Pattern
 void Game::update(sf::RenderWindow& window, float DeltaTime) {
-	if (Effect != nullptr)
+	if (ExplosionEffect != nullptr)
 	{
-		Effect->Update(DeltaTime);
+		ExplosionEffect->Update(DeltaTime);
+	}
+	if (SnowEffect != nullptr)
+	{
+		SnowEffect->Update(DeltaTime);
 	}
 }
 
@@ -63,9 +100,13 @@ void Game::render(sf::RenderWindow& window) {
 	// This clears the window at the beginning of every frame
 	window.clear();
 
-	if (Effect != nullptr)
+	if (ExplosionEffect != nullptr)
 	{
-		Effect->Draw(window);
+		ExplosionEffect->Draw(window);
+	}
+	if (SnowEffect != nullptr)
+	{
+		SnowEffect->Draw(window);
 	}
 	//test.render(window);
 
