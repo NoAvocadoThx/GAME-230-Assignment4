@@ -24,6 +24,7 @@
 #include "ExplosionParticleEffect.h"
 #include "SnowParticleEffect.h"
 #include "ParticleEffect.h"
+#include "FireworksParticleEffect.h"
 
  // Place our classes, functions, variables, and so forth in their own namespace to avoid naming collisions
 namespace gm {
@@ -33,7 +34,9 @@ namespace gm {
 	private:
 		ExplosionParticleEffect* ExplosionEffect = nullptr;
 		SnowParticleEffect* SnowEffect = nullptr;
+		FireworksParticleEffect* FireworksEffect = nullptr;
 		int EffectIndex = 0;
+		void delayFor(float seconds);
 	public:
 		/* Protoypes */
 		// Constructor
