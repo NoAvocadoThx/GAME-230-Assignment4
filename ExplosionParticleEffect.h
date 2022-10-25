@@ -14,7 +14,8 @@ class ExplosionParticleEffect : public ParticleEffect
 public:
 	ExplosionParticleEffect();
 	~ExplosionParticleEffect();
-	CircleParticle* CreateParticle(Vector2f MousePosition);
+	CircleParticle& CreateParticle(Vector2f MousePosition);
+	void DestroyParticle(ShapeParticle*);
 private:
 	CircleParticle* SingleParticle;
 };

@@ -34,7 +34,8 @@ public:
 	ParticleEffect(int Size);
 	~ParticleEffect();
 	void CreateParticleArray(Vector2f MousePosition);
-	virtual ShapeParticle* CreateParticle(Vector2f MousePosition) = 0;
+	virtual ShapeParticle& CreateParticle(Vector2f MousePosition) = 0;
+	virtual void DestroyParticle(ShapeParticle*) = 0;
 	void Update(float DeltaTime);
 	void Draw(RenderWindow& Window);
 	void Destroy();

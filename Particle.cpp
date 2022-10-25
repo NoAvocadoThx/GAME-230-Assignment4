@@ -33,7 +33,10 @@ Particle::Particle(Vector2f MousePosition, Vector2f ParticleVelocity, float Spee
 Particle::~Particle()
 {
 
-	
+	Duration = 0;
+	ParticleSpeed = 0;
+	IsAlive = false;
+	Timer = Duration;
 }
 
 
@@ -47,7 +50,7 @@ void Particle::Update(float DeltaTime)
 		IsAlive = false;
 		if (this != nullptr)
 		{
-			delete this;
+			//delete this;
 			
 		}
 	}

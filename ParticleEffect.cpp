@@ -16,12 +16,15 @@ ParticleEffect::ParticleEffect(int _Size)
 {
 	Duration = 10;
 	Size = _Size;
+	ParticleArray = nullptr;
 }
 
 //*****************************************************************
 ParticleEffect::~ParticleEffect()
 {
 	Destroy();
+	delete[] ParticleArray;
+	ParticleArray = nullptr;
 	
 }
 
@@ -42,7 +45,7 @@ void ParticleEffect::CreateParticleArray(Vector2f MousePosition)
 	ParticleArray = new ShapeParticle*[Size];
 	for (int i = 0; i < Size; i++)
 	{
-		ParticleArray[i] = CreateParticle(MousePosition);
+		ParticleArray[i] = &CreateParticle(MousePosition);
 	}
 	Duration = 10;
 
@@ -56,22 +59,24 @@ void ParticleEffect::Update(float DeltaTime)
 		if (ParticleArray[i] != nullptr)
 		{
 			ParticleArray[i]->Update(DeltaTime);
+
+			if (ParticleArray[i]->GetLifeSpanRemaining() <= 0)
+			{
+				DestroyParticle(ParticleArray[i]);
+				ParticleArray[i] = nullptr;
+				
+			}
 		}
 	}
 
-	Duration -= DeltaTime;
-	if (Duration <= 0)
-	{
-		delete[] ParticleArray;
-		ParticleArray = nullptr;
-	}
+
 }
 //*****************************************************************
 void ParticleEffect::Draw(RenderWindow& Window)
 {
 	for (int i = 0; i < Size; i++)
 	{
-		if (ParticleArray[i] != nullptr)
+		if (ParticleArray[i] != nullptr && ParticleArray[i]->GetIsAlive())
 		{
 			ParticleArray[i]->Draw(Window);
 		}
@@ -91,7 +96,10 @@ void ParticleEffect::Destroy()
 {
 	for (int i = 0; i < Size; i++)
 	{
-		delete ParticleArray[i];
-		ParticleArray[i] = nullptr;
+		if (ParticleArray[i] != nullptr)
+		{
+			delete ParticleArray[i];
+			ParticleArray[i] = nullptr;
+		}
 	}
 }

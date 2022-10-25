@@ -397,4 +397,16 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 .vs/Assignment4/v17/Browse.VC.db
-x64/
+x64/*
+x64/Debug/Assignment4.exe
+x64/Debug/Assignment4.ilk
+x64/Debug/Assignment4.log
+x64/Debug/Assignment4.pdb
+x64/Debug/Assignment4.tlog/CL.command.1.tlog
+x64/Debug/Assignment4.tlog/CL.read.1.tlog
+x64/Debug/Assignment4.tlog/CL.write.1.tlog
+x64/Debug/Main.obj
+x64/Debug/Particle.obj
+x64/Debug/ParticleEffect.obj
+x64/Debug/vc143.idb
+x64/Debug/vc143.pdb

@@ -32,6 +32,7 @@ void CircleParticle::Update(float DeltaTime)
 	this->SetPosition( Vector2f( this->GetVelocity().x * DeltaTime + this->GetPosition().x, this->GetVelocity().y * DeltaTime + this->GetPosition().y));
 
 	Circle.setPosition(this->GetPosition());
+	ShapeParticle::Update(DeltaTime);
 }
 //*****************************************************************
 
