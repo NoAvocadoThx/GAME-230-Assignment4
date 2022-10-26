@@ -21,10 +21,10 @@ FireworksParticleEffect::~FireworksParticleEffect()
 
 CircleParticle& FireworksParticleEffect::CreateParticle(Vector2f MousePosition)
 {
-	Vector2f Velocity(((float)(std::rand() % 1500 - 500)), ((float)(std::rand() % 1500)));
-	Vector2f Position((float)(std::rand() % 500 - 250), (float)(std::rand() % 500 - 250));
+	Vector2f Velocity(((float)(std::rand() % 100 - 100)), ((float)(std::rand() % 100)));
+	//Vector2f Position((float)(std::rand() % 500 - 250), (float)(std::rand() % 500 - 250));
 	//Velocity = Normalize(Velocity);
-	SingleParticle = new CircleParticle(MousePosition + Position, Velocity, 3, Color::White, 1);
+	SingleParticle = new CircleParticle(MousePosition, Velocity, 3, Color::White, 1);
 	return *SingleParticle;
 }
 

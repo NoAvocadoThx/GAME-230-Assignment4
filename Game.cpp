@@ -7,6 +7,8 @@
 // UCSC GPM FALL 2022
 //*****************************************************************
 #include "Game.h"
+#include <iostream>
+#include <random>
 
 // Since we are in our private .cpp file, it's fine to use a namespace here
 using namespace gm;
@@ -16,14 +18,20 @@ using namespace sf;
 Game::Game() {
 	//test.setPosition(Vector2f(400, 300));
 	//test.setSize(50);
+	
 }
 
 // Implements private funtion that delay for the purpose of looping
 void Game::delayFor(float seconds) {
 	int x = 0;
-	while (x < seconds * 1000) {
+	while (x < seconds * 10000) {
 		++x;
 	}
+}
+
+// Implements private fuction that use vector and repeat the effects
+void Game::repeatingEffects() {
+
 }
 
 // Implements the handle input portion of our Game Loop Programming Pattern
@@ -72,19 +80,16 @@ void Game::handleInput(sf::RenderWindow& window) {
 					break;
 				case 2:
 					FireworksEffect = new FireworksParticleEffect();
-					FireworksEffect->CreateParticleArray(MousePosition);
-					delayFor(3);
-					delete FireworksEffect;
+					effectsVector.assign(3, FireworksEffect);
 
-					FireworksEffect = new FireworksParticleEffect();
-					FireworksEffect->CreateParticleArray(MousePosition);
-					delayFor(3);
-					delete FireworksEffect;
-
-					FireworksEffect = new FireworksParticleEffect();
-					FireworksEffect->CreateParticleArray(MousePosition);
-					delayFor(3);
+					for (FireworksParticleEffect* effectIndex : effectsVector) {
+						Vector2f tempPos((float)(std::rand() % 500 - 250), (float)(std::rand() % 500 - 250));
+						effectIndex->CreateParticleArray(tempPos + MousePosition);
+					}
+					//FireworksEffect->CreateParticleArray(MousePosition);
 					
+					//delete FireworksEffect;
+
 					break;
 				default:
 					break;

@@ -26,17 +26,26 @@
 #include "ParticleEffect.h"
 #include "FireworksParticleEffect.h"
 
+#include <vector>
+
  // Place our classes, functions, variables, and so forth in their own namespace to avoid naming collisions
 namespace gm {
 	/* Our Game Class                               *
 	 * Implements the Game Loop Programming Pattern */
+	//template<typename T>
+
 	class Game {
+		
 	private:
+		
+		std::vector<FireworksParticleEffect*> effectsVector;
+
 		ExplosionParticleEffect* ExplosionEffect = nullptr;
 		SnowParticleEffect* SnowEffect = nullptr;
 		FireworksParticleEffect* FireworksEffect = nullptr;
 		int EffectIndex = 0;
 		void delayFor(float seconds);
+		void repeatingEffects();
 	public:
 		/* Protoypes */
 		// Constructor
