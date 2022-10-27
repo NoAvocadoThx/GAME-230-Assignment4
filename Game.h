@@ -38,16 +38,16 @@ namespace gm {
 		
 	private:
 		
-		std::vector<FireworksParticleEffect*> effectsVector;
+		std::vector<FireworksParticleEffect*> FireworksEffectsVector;
 
 		ExplosionParticleEffect* ExplosionEffect = nullptr;
 		SnowParticleEffect* SnowEffect = nullptr;
-		FireworksParticleEffect* FireworksEffect = nullptr;
+		//FireworksParticleEffect* FireworksEffect = nullptr;
 		int EffectIndex = 0;
-		const int DELAYTIME = 20000;
+		const int DELAYTIME = 8000;
 		int LoopCount = 0;
 		const int MAXLOOPCOUNT = 3;
-		
+		float FireworkDelayTimer;
 		void delayFor(float seconds);
 		void repeatingEffects();
 	public:

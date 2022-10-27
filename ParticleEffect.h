@@ -17,10 +17,6 @@ using namespace sf;
 class ParticleEffect
 {
 private:
-
-	
-	
-
 	float Duration;
 
 protected:
