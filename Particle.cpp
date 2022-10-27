@@ -48,64 +48,60 @@ void Particle::Update(float DeltaTime)
 	if (Timer <= 0)
 	{
 		IsAlive = false;
-		if (this != nullptr)
-		{
-			//delete this;
-			
-		}
+
 	}
 }
 
 
 //*****************************************************************
-Vector2f Particle::GetPosition()
+const Vector2f Particle::GetPosition() const
 {
 	return Position;
 }
 //*****************************************************************
-void Particle::SetPosition(Vector2f _Position)
+void Particle::SetPosition(const Vector2f _Position)
 {
 	Position = _Position;
 }
 //*****************************************************************
-Vector2f  Particle::GetVelocity()
+const Vector2f  Particle::GetVelocity() const
 {
 	return Velocity;
 }
 //*****************************************************************
-void  Particle::SetVelocity(Vector2f _Velocity)
+void  Particle::SetVelocity(const Vector2f _Velocity)
 {
 	Velocity = _Velocity;
 }
 //*****************************************************************
-float Particle::GetLifeSpan()
+const float Particle::GetLifeSpan() const
 {
 	return Duration;
 }
 //*****************************************************************
-void Particle::SetLifeSpan(float LifeSpan)
+void Particle::SetLifeSpan(const float LifeSpan)
 {
 	Duration = LifeSpan;
 }
 
 //*****************************************************************
-float Particle::GetLifeSpanRemaining()
+const float Particle::GetLifeSpanRemaining() const
 {
 	return Timer;
 }
 //*****************************************************************
-void Particle::SetLifeSpanRemaining(float RemainDuration)
+void Particle::SetLifeSpanRemaining(const float RemainDuration)
 {
 	Timer = RemainDuration;
 }
 
 //*****************************************************************
-bool Particle::GetIsAlive()
+const bool Particle::GetIsAlive() const
 {
 	return IsAlive;
 }
 //*****************************************************************
-void Particle::SetIsAlive(bool _IsAlive)
+void Particle::SetIsAlive(const bool _IsAlive)
 {
 	IsAlive = _IsAlive;
 }

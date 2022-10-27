@@ -11,6 +11,7 @@
 #include <SFML/Window.hpp>
 #include "ShapeParticle.h"
 
+
 using namespace sf;
 
 class ParticleEffect
@@ -18,24 +19,26 @@ class ParticleEffect
 private:
 
 	
-	ShapeParticle** ParticleArray;
+	
 
 	float Duration;
 
 protected:
 	int Size;
+	ShapeParticle** ParticleArray;
+	
 public:
 	ParticleEffect() 
 	{ 
 		Size = 30; 
 		Duration = 10;
 		ParticleArray = nullptr;
+		
 	};
 	ParticleEffect(int Size);
-	~ParticleEffect();
+	virtual ~ParticleEffect();
 	void CreateParticleArray(Vector2f MousePosition);
-	virtual ShapeParticle& CreateParticle(Vector2f MousePosition) = 0;
-	virtual void DestroyParticle(ShapeParticle*) = 0;
+	virtual ShapeParticle* CreateParticle(Vector2f MousePosition) = 0;
 	void Update(float DeltaTime);
 	void Draw(RenderWindow& Window);
 	void Destroy();

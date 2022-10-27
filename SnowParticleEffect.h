@@ -13,9 +13,10 @@ class SnowParticleEffect : public ParticleEffect
 {
 public:
 	SnowParticleEffect();
+	SnowParticleEffect(int Size);
 	~SnowParticleEffect();
-	CircleParticle& CreateParticle(Vector2f MousePosition);
-	void DestroyParticle(ShapeParticle*);
+	ShapeParticle* CreateParticle(Vector2f MousePosition);
+	
 private:
 	CircleParticle* SingleParticle;
 };

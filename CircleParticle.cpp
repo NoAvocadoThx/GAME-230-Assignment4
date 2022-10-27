@@ -32,6 +32,7 @@ void CircleParticle::Update(float DeltaTime)
 	this->SetPosition( Vector2f( this->GetVelocity().x * DeltaTime + this->GetPosition().x, this->GetVelocity().y * DeltaTime + this->GetPosition().y));
 
 	Circle.setPosition(this->GetPosition());
+	Circle.setRadius(Radius);
 	ShapeParticle::Update(DeltaTime);
 }
 //*****************************************************************
@@ -42,13 +43,13 @@ void CircleParticle::Draw(RenderWindow& Window)
 }
 //*****************************************************************
 
-float CircleParticle::GetRadius()
+const float CircleParticle::GetRadius() const
 {
 	return Radius;
 }
 //*****************************************************************
 
-void CircleParticle::SetRadius(float _Radius)
+void CircleParticle::SetRadius(const float _Radius)
 {
 	Radius = _Radius;
 	

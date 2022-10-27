@@ -63,11 +63,11 @@ void Game::handleInput(sf::RenderWindow& window) {
 				{
 
 				case 0:
-					ExplosionEffect = new ExplosionParticleEffect();
+					ExplosionEffect = new ExplosionParticleEffect(100);
 					ExplosionEffect->CreateParticleArray(MousePosition);
 					break;
 				case 1:
-					SnowEffect = new SnowParticleEffect();
+					SnowEffect = new SnowParticleEffect(300);
 					SnowEffect->CreateParticleArray(MousePosition);
 					break;
 				case 2:
@@ -154,6 +154,9 @@ void Game::render(sf::RenderWindow& window) {
 }
 
 // Implement destructor, make sure we free up any memory that we allocated here!
-Game::~Game() {
+Game::~Game() 
+{
+	if (ExplosionEffect != nullptr) delete ExplosionEffect;
+	if (SnowEffect != nullptr) delete SnowEffect;
 
 }

@@ -20,6 +20,6 @@ public:
 	~CircleParticle();
 	void Update(float DeltaTime);
 	void Draw(RenderWindow& Window);
-	float GetRadius();
-	void SetRadius(float _Radius);
+	const float GetRadius() const;
+	void SetRadius(const float _Radius);
 };

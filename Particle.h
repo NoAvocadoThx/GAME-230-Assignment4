@@ -28,22 +28,22 @@ private:
 public:
 	Particle();
 	Particle(Vector2f MousePostition, Vector2f ParticleVelocity, float Speed, Color Color, float Duration);
-	~Particle();
+	virtual ~Particle();
 
-	virtual Vector2f GetPosition();
-	virtual void SetPosition(Vector2f Position);
+	virtual const Vector2f GetPosition() const;
+	virtual void SetPosition(const Vector2f Position);
 
-	virtual Vector2f GetVelocity();
-	virtual void SetVelocity(Vector2f Velocity);
+	virtual const Vector2f GetVelocity() const;
+	virtual void SetVelocity(const Vector2f Velocity);
 
-	virtual float GetLifeSpan();
-	virtual void SetLifeSpan(float LifeSpan);
+	virtual const float GetLifeSpan() const;
+	virtual void SetLifeSpan(const float LifeSpan);
 
-	virtual float GetLifeSpanRemaining();
-	virtual void SetLifeSpanRemaining(float RemainDuration);
+	virtual const float GetLifeSpanRemaining() const;
+	virtual void SetLifeSpanRemaining(const float RemainDuration);
 
-	virtual bool GetIsAlive();
-	virtual void SetIsAlive(bool IsAlive);
+	virtual const bool GetIsAlive() const;
+	virtual void SetIsAlive(const bool IsAlive);
 
 	
 

@@ -14,8 +14,7 @@ class FireworksParticleEffect : public ParticleEffect
 public:
 	FireworksParticleEffect();
 	~FireworksParticleEffect();
-	CircleParticle& CreateParticle(Vector2f MousePosition);
-	void DestroyParticle(ShapeParticle*);
+	ShapeParticle* CreateParticle(Vector2f MousePosition);
 private:
 	CircleParticle* SingleParticle;
 };

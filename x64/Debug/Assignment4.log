@@ -1,10 +1,9 @@
 ﻿  CircleParticle.cpp
   ExplosionParticleEffect.cpp
+  FireworksParticleEffect.cpp
   Game.cpp
   Main.cpp
-  Particle.cpp
   ParticleEffect.cpp
-  ShapeParticle.cpp
+  SnowParticleEffect.cpp
   Generating Code...
-  LINK : C:\Users\Dennis Zabluda\source\UCSC Classworks\GAME 230\GAME-230-Assignment4\x64\Debug\Assignment4.exe not found or not built by the last incremental link; performing full link
-  Assignment4.vcxproj -> C:\Users\Dennis Zabluda\source\UCSC Classworks\GAME 230\GAME-230-Assignment4\x64\Debug\Assignment4.exe
+  Assignment4.vcxproj -> E:\GAME230\GAME-230-Assignment4\x64\Debug\Assignment4.exe

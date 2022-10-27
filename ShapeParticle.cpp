@@ -28,7 +28,7 @@ void ShapeParticle::Update(float DeltaTime)
 }
 
 //*****************************************************************
-Shape* ShapeParticle::GetShape()
+const Shape* ShapeParticle::GetShape() const
 {
 	return Shape_P;
 }
