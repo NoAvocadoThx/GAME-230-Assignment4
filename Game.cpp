@@ -80,13 +80,9 @@ void Game::handleInput(sf::RenderWindow& window) {
 					break;
 				case 2:
 					FireworksEffect = new FireworksParticleEffect();
-					effectsVector.assign(3, FireworksEffect);
-
-					for (FireworksParticleEffect* effectIndex : effectsVector) {
-						Vector2f tempPos((float)(std::rand() % 500 - 250), (float)(std::rand() % 500 - 250));
-						effectIndex->CreateParticleArray(tempPos + MousePosition);
-					}
-					//FireworksEffect->CreateParticleArray(MousePosition);
+					//effectsVector.assign(3, FireworksEffect);
+					FireworksEffect->CreateParticleArray(MousePosition);
+					isRepeating = true;
 					
 					//delete FireworksEffect;
 
@@ -132,6 +128,29 @@ void Game::update(sf::RenderWindow& window, float DeltaTime) {
 	{
 		FireworksEffect->Update(DeltaTime);
 	}
+	if (isRepeating) {
+		switch (EffectIndex)
+		{
+		case 2:
+			if (LoopCount == 3) {
+				isRepeating = false;
+				LoopCount = 0;
+				break;
+			}
+			std::cout << "DeltaTime " << DeltaTime << std::endl;
+			if ((int)DeltaTime % DELAYTIME == 0) {
+				Vector2f Position((float)(std::rand() % 1000), (float)(std::rand() % 1000));
+				FireworksEffect->CreateParticleArray(Position);
+
+				std::cout << "Create Fireworks " << LoopCount << std::endl;
+				++LoopCount;
+			}
+			break;
+		default:
+			break;
+		}
+	}
+
 }
 
 // Implements the render portion of our Game Loop Programming Pattern

@@ -44,6 +44,10 @@ namespace gm {
 		SnowParticleEffect* SnowEffect = nullptr;
 		FireworksParticleEffect* FireworksEffect = nullptr;
 		int EffectIndex = 0;
+		const int DELAYTIME = 20000;
+		int LoopCount = 0;
+		const int MAXLOOPCOUNT = 3;
+		
 		void delayFor(float seconds);
 		void repeatingEffects();
 	public:
@@ -56,6 +60,8 @@ namespace gm {
 		void render(sf::RenderWindow& window);
 		// Destructor
 		~Game();
+		// Public variables
+		bool isRepeating = false; //If the function need repeater for the Update function
 	};
 }
 

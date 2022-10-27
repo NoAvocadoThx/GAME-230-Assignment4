@@ -38,10 +38,12 @@ int main()
 	Window.setFramerateLimit(60);
 	Clock deltaClock;
 
-
 	while (Window.isOpen())
 	{
-		Time dt = deltaClock.restart();
+		Time dt = deltaClock.getElapsedTime();
+		if (!g.isRepeating) {
+			dt = deltaClock.restart();
+		}
 
 		// Our game object handles the game loop programming pattern
 		g.handleInput(Window);
