@@ -18,7 +18,7 @@ using namespace sf;
 Game::Game() {
 	//test.setPosition(Vector2f(400, 300));
 	//test.setSize(50);
-	FireworkDelayTimer = 0;
+	FireworkDelayTimer = DELAYTIME;
 }
 
 // Implements private funtion that delay for the purpose of looping
@@ -61,15 +61,19 @@ void Game::handleInput(sf::RenderWindow& window) {
 					delete SnowEffect;
 					SnowEffect = nullptr;
 				}
+				
 				for (FireworksParticleEffect* effect : FireworksEffectsVector) {
 					if (effect != nullptr)
 					{
-						FireworksEffectsVector.erase(FireworksEffectsVector.begin());
-						//delete effect;
-						//effect = nullptr;
+						//FireworksEffectsVector.erase(FireworksEffectsVector.begin());
+						if (effect != nullptr)
+						{
+							delete effect;
+							effect = nullptr;
+						}
 					}
 				}
-				
+				FireworksEffectsVector.clear();
 				FireworksParticleEffect* effect = nullptr;
 				switch (EffectIndex)
 				{
@@ -83,9 +87,7 @@ void Game::handleInput(sf::RenderWindow& window) {
 					SnowEffect->CreateParticleArray(MousePosition);
 					break;
 				case 2:
-					effect = new FireworksParticleEffect();
-					effect->CreateParticleArray(MousePosition);
-					FireworksEffectsVector.push_back(effect);
+			
 					isRepeating = true;
 					
 					//delete FireworksEffect;
@@ -145,26 +147,23 @@ void Game::update(sf::RenderWindow& window, float DeltaTime) {
 			if (LoopCount == 4) {
 				isRepeating = false;
 				LoopCount = 0;
+			
 				break;
 			}
-			if (DELAYTIME != 0 && (int)DeltaTime % DELAYTIME == 0) {
-				FireworksParticleEffect* effect = new FireworksParticleEffect();
+
+			FireworkDelayTimer -= DeltaTime;
+			if (LoopCount > FireworksEffectsVector.size()) LoopCount = 0;
+			if (FireworkDelayTimer <= 0 )
+			{
+				FireworksEffectsVector.push_back(new FireworksParticleEffect());
 				Vector2f Position((float)(std::rand() % 300 - 150), (float)(std::rand() % 300 - 150));
-				effect->CreateParticleArray(MousePosition + Position);
-				FireworksEffectsVector.push_back(effect);
+				FireworksEffectsVector[LoopCount]->CreateParticleArray(MousePosition + Position);
+				
 				std::cout << "Create Fireworks " << LoopCount << std::endl;
 				++LoopCount;
+				FireworkDelayTimer = DELAYTIME;
 			}
-			/*
-			//std::cout << "DeltaTime " << DeltaTime << std::endl;
-			if ((int)DeltaTime % DELAYTIME == 0) {
-				Vector2f Position((float)(std::rand() % 200), (float)(std::rand() % 200));
-				
-				FireworksEffect->CreateParticleArray(Position + MousePosition);
 
-				
-			}
-			*/
 			break;
 		default:
 			break;
@@ -176,14 +175,16 @@ void Game::update(sf::RenderWindow& window, float DeltaTime) {
 // Implements the render portion of our Game Loop Programming Pattern
 void Game::render(sf::RenderWindow& window) {
 	// This clears the window at the beginning of every frame
+	
 	window.clear();
-
 	if (ExplosionEffect != nullptr)
 	{
+		
 		ExplosionEffect->Draw(window);
 	}
 	if (SnowEffect != nullptr)
 	{
+		
 		SnowEffect->Draw(window);
 	}
 	for (FireworksParticleEffect* effect : FireworksEffectsVector) {

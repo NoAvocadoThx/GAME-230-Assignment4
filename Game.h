@@ -44,7 +44,7 @@ namespace gm {
 		SnowParticleEffect* SnowEffect = nullptr;
 		//FireworksParticleEffect* FireworksEffect = nullptr;
 		int EffectIndex = 0;
-		const int DELAYTIME = 8000;
+		const float DELAYTIME = 0.3f;
 		int LoopCount = 0;
 		const int MAXLOOPCOUNT = 3;
 		float FireworkDelayTimer;

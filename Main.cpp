@@ -41,9 +41,9 @@ int main()
 	while (Window.isOpen())
 	{
 		Time dt = deltaClock.getElapsedTime();
-		if (!g.isRepeating) {
+		//if (!g.isRepeating) {
 			dt = deltaClock.restart();
-		}
+		//}
 
 		// Our game object handles the game loop programming pattern
 		g.handleInput(Window);

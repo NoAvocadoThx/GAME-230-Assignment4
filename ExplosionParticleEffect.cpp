@@ -30,7 +30,7 @@ ShapeParticle* ExplosionParticleEffect::CreateParticle(Vector2f MousePosition)
 {
 	Vector2f Velocity(((float)(std::rand() % 1500 - 500)), ((float)(std::rand() % 1500 - 500)));
 	//Velocity = Normalize(Velocity);
-	SingleParticle = new CircleParticle(MousePosition,Velocity, 3, Color::Yellow,1);
+	SingleParticle = new CircleParticle(MousePosition,Velocity, 2, Color::Yellow,3);
 	return SingleParticle;
 }
 
