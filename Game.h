@@ -46,7 +46,7 @@ namespace gm {
 		int EffectIndex = 0;
 		const float DELAYTIME = 0.3f;
 		int LoopCount = 0;
-		const int MAXLOOPCOUNT = 3;
+		const int MAXLOOPCOUNT = 10;
 		float FireworkDelayTimer;
 		void delayFor(float seconds);
 		void repeatingEffects();

@@ -144,7 +144,7 @@ void Game::update(sf::RenderWindow& window, float DeltaTime) {
 		switch (EffectIndex)
 		{
 		case 2:
-			if (LoopCount == 4) {
+			if (LoopCount == MAXLOOPCOUNT) {
 				isRepeating = false;
 				LoopCount = 0;
 			
