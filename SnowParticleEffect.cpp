@@ -26,11 +26,11 @@ SnowParticleEffect::~SnowParticleEffect()
 
 ShapeParticle* SnowParticleEffect::CreateParticle(Vector2f MousePosition)
 {
-	Vector2f Velocity(0, ((float)(std::rand() % 1500)));
+	Vector2f Velocity(0, ((float)(std::rand() % 500)));
 	Vector2f Position((float)(std::rand() % 500 - 250), 0);
 	//Velocity = Normalize(Velocity);
 	this->Position = MousePosition;
-	SingleParticle = new CircleParticle(MousePosition + Position, Velocity, 3, Color::White, 1);
+	SingleParticle = new CircleParticle(MousePosition + Position, Velocity, 1, Color::White, 1);
 	dynamic_cast<CircleParticle*>(SingleParticle)->SetRadius(1);
 	float RandomDuration((float)(std::rand() % 10));
 	SingleParticle->SetLifeSpanRemaining(RandomDuration);
