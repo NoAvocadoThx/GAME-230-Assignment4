@@ -42,7 +42,7 @@ int main()
 	{
 		Time dt = deltaClock.getElapsedTime();
 		//if (!g.isRepeating) {
-			dt = deltaClock.restart();
+		dt = deltaClock.restart();
 		//}
 
 		// Our game object handles the game loop programming pattern

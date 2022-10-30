@@ -48,8 +48,6 @@ namespace gm {
 		int LoopCount = 0;
 		const int MAXLOOPCOUNT = 10;
 		float FireworkDelayTimer;
-		void delayFor(float seconds);
-		void repeatingEffects();
 	public:
 		/* Protoypes */
 		// Constructor

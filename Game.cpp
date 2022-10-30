@@ -21,19 +21,6 @@ Game::Game() {
 	FireworkDelayTimer = DELAYTIME;
 }
 
-// Implements private funtion that delay for the purpose of looping
-void Game::delayFor(float seconds) {
-	int x = 0;
-	while (x < seconds * 10000) {
-		++x;
-	}
-}
-
-// Implements private fuction that use vector and repeat the effects
-void Game::repeatingEffects() {
-
-}
-
 // Implements the handle input portion of our Game Loop Programming Pattern
 void Game::handleInput(sf::RenderWindow& window) {
 	// Check for events from the window
@@ -66,11 +53,10 @@ void Game::handleInput(sf::RenderWindow& window) {
 					if (effect != nullptr)
 					{
 						//FireworksEffectsVector.erase(FireworksEffectsVector.begin());
-						if (effect != nullptr)
-						{
-							delete effect;
-							effect = nullptr;
-						}
+						
+						delete effect;
+						effect = nullptr;
+						
 					}
 				}
 				FireworksEffectsVector.clear();
